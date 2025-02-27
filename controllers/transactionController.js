@@ -1,6 +1,8 @@
-import mongoose from 'mongoose';
-import Transaction from '../models/transactionModel.js';
-import Stripe from 'stripe';
+const mongoose = require('mongoose');
+//import Transaction from '../models/transactionModel.js';
+//import Stripe from 'stripe';
+const Transaction = require('../models/transactionModel');
+const Stripe = require('stripe');
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -27,8 +29,8 @@ export const processTransaction = async (req, res) => {
 
     
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount * 100, // Convert to cents
-      currency: 'usd',
+      amount: amount * 100, 
+      currency: 'inr',
       payment_method_types: ['card'],
     });
 
