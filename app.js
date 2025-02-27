@@ -7,7 +7,7 @@ const limiter = require("./config/rateLimit");
 const authRoutes = require("./routes/authRoutes");
 const sanitizationRoutes = require("./routes/sanitizationRoutes");
 const productRoutes = require('./routes/productRoutes');
-
+const  transactionRoutes = require('./routes/transactionRoutes.js')
 
 const app = express();
 app.use(express.json());
@@ -17,7 +17,8 @@ app.use("/api/v1", itemRoutes);
 app.use("/api/v1/user", authRoutes);
 app.use("/api/v1/santise", sanitizationRoutes);
 app.use('/api/v1', productRoutes);
+app.use('/api/v1', transactionRoutes);
 
-connectDB(); // Connect to database
+connectDB(); 
 
 module.exports = app;
